@@ -8,6 +8,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.HashMap;
+
+import model.Parking;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -56,25 +59,41 @@ public class ParkingParser {
 		}
 	}
 	
-	public void parse() {
+	public HashMap<Integer, Parking> parse() {
+		JSONParser parser = new JSONParser();
+		HashMap<Integer, Parking> parkingList = new HashMap<Integer,Parking>();
+		
 		String datas = this.extractedDatas.toString();
 		datas = "["+datas+"]";
-		JSONParser parser=new JSONParser();
 		
-		Object obj;
 		try {
-			obj = parser.parse(datas);
+			Object obj = parser.parse(datas);
 			JSONArray array=(JSONArray)obj;
 			System.out.println("======the 2nd element of array======");
 			System.out.println(array.get(0));
 			
 			JSONObject obj2=(JSONObject)array.get(0);
-			System.out.println("======field \"1\"==========");
-			System.out.println(obj2.get("datatime"));  
+			System.out.println(obj2.get("s"));
+			
+			JSONArray parkings = (JSONArray)obj2.get("s");
+			
+			int i = 0;
+			for(Object p : parkings){
+				JSONObject tmpJsonParking = (JSONObject)parkings.get(i);
+				Parking tmpParking = new Parking(Integer.parseInt((String) tmpJsonParking.get("id")), 
+						Integer.parseInt((String)tmpJsonParking.get("df")), 
+						Integer.parseInt((String)tmpJsonParking.get("dt")), 
+						"default", 
+						"status_4");
+				parkingList.put(Integer.parseInt((String)tmpJsonParking.get("id")), tmpParking);
+				i++;
+			}
+			
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return parkingList;
 	}
 
 }

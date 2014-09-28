@@ -39,6 +39,14 @@ public class Parking {
 	public int getId() {
 		return id;
 	}
+	
+	public String toString(){
+		StringBuffer sb = new StringBuffer();
+		sb.append("Parking(" + this.id + "): " + this.name + "\n");
+		sb.append("Avaible places: " + this.avaiblePlaces + "/" + this.fullPlaces +"\n");
+		sb.append("Status: " + this.status + "\n");
+		return sb.toString();
+	}
 
 	public int getAvaiblePlaces() {
 		return avaiblePlaces;
