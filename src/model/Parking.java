@@ -2,7 +2,7 @@ package model;
 
 public class Parking {
 	private int id, avaiblePlaces, fullPlaces;
-	private float longitude, latitude;
+	private double longitude, latitude;
 	private String name;
 	private Status status;
 	
@@ -36,7 +36,7 @@ public class Parking {
 		return null;
 	}
 	
-	public void mergeDatas(String name, int longitude, int latitude){
+	public void mergeDatas(String name, Double longitude, Double latitude){
 		this.name = name;
 		this.longitude = longitude;
 		this.latitude = latitude;
@@ -46,13 +46,17 @@ public class Parking {
 		sb.append("Parking(" + this.id + "): " + this.name + "\n");
 		sb.append("Avaible places: " + this.avaiblePlaces + "/" + this.fullPlaces +"\n");
 		sb.append("Status: " + this.status + "\n");
+		sb.append("Long: " + this.longitude + "\n");
+		sb.append("Latit: " + this.latitude + "\n");
 		return sb.toString();
 	}
 
 	public int getId() {
 		return id;
 	}
-	
+	public void setId(int id){
+		this.id = id;
+	}
 	public int getAvaiblePlaces() {
 		return avaiblePlaces;
 	}
@@ -61,11 +65,11 @@ public class Parking {
 		return fullPlaces;
 	}
 
-	public float getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
 
-	public float getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 

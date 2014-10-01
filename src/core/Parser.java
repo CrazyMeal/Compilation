@@ -8,10 +8,15 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.HashMap;
+
+import model.Parking;
 
 public abstract class Parser {
 	protected URL urlToParse;
 	protected StringBuffer extractedDatas;
+	
+	public abstract HashMap<Integer, Parking> parse();
 	
 	public void setUrlToParse(String urlToParse) {
 		try {
