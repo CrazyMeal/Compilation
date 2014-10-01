@@ -23,6 +23,15 @@ public class Parking {
 		this.name = name;
 		this.status = this.setStatus(status);
 	}
+	public Parking(int id, int avaiblePlaces, int fullPlaces, String name, Status status, Double longitude, Double latitude){
+		this.id = id;
+		this.avaiblePlaces = avaiblePlaces;
+		this.fullPlaces = fullPlaces;
+		this.name = name;
+		this.longitude = longitude;
+		this.latitude = latitude;
+		this.status = status;
+	}
 	private Status setStatus(String status) {
 		if(status.equals("status_1"))
 			return this.status = Status.OPEN;

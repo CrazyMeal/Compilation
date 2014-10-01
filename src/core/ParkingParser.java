@@ -34,7 +34,7 @@ public class ParkingParser extends Parser{
 						Integer.parseInt((String)tmpJsonParking.get("df")), 
 						Integer.parseInt((String)tmpJsonParking.get("dt")), 
 						"default", 
-						"status_4");
+						(String)tmpJsonParking.get("ds"));
 				parkingList.put(Integer.parseInt((String)tmpJsonParking.get("id")), tmpParking);
 				i++;
 			}

@@ -36,15 +36,9 @@ public class ParkingParseTest {
 		HashMap<Integer,Parking> locationList = lp.parse();
 		assertEquals(26, locationList.size());
 		
-		/*
-		for(Entry<Integer, Parking> p : locationList.entrySet()){
+		HashMap<Integer,Parking> finalList = Merger.merge(parkingList, locationList);
+		for(Entry<Integer, Parking> p : finalList.entrySet()){
 			System.out.println(p.getValue().toString());
 		}
-		*/
-		/*
-		for(Entry<Integer, Parking> p : parkingList.entrySet()){
-			System.out.println(p.getValue().toString());
-		}
-		*/
 	}
 }
