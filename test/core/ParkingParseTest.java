@@ -16,6 +16,7 @@ public class ParkingParseTest {
 		ParkingParser pp = new ParkingParser();
 		pp.setUrlToParse("http://carto.strasmap.eu/remote.amf.json/Parking.status");
 		pp.getDatas();
+
 	}
 	
 	@Test
@@ -23,11 +24,12 @@ public class ParkingParseTest {
 		ParkingParser pp = new ParkingParser();
 		pp.setUrlToParse("http://carto.strasmap.eu/remote.amf.json/Parking.status");
 		pp.getDatas();
+		
 		HashMap<Integer,Parking> parkingList = pp.parse();
 		assertEquals(26, parkingList.size());
 		
 		for(Entry<Integer, Parking> p : parkingList.entrySet()){
-			System.out.println(p.toString());
+			System.out.println(p.getValue().toString());
 		}
 	}
 }

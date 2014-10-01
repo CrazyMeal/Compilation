@@ -35,11 +35,12 @@ public class Parking {
 		
 		return null;
 	}
-
-	public int getId() {
-		return id;
-	}
 	
+	public void mergeDatas(String name, int longitude, int latitude){
+		this.name = name;
+		this.longitude = longitude;
+		this.latitude = latitude;
+	}
 	public String toString(){
 		StringBuffer sb = new StringBuffer();
 		sb.append("Parking(" + this.id + "): " + this.name + "\n");
@@ -48,6 +49,10 @@ public class Parking {
 		return sb.toString();
 	}
 
+	public int getId() {
+		return id;
+	}
+	
 	public int getAvaiblePlaces() {
 		return avaiblePlaces;
 	}
