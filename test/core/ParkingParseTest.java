@@ -7,7 +7,10 @@ import java.util.Map.Entry;
 
 import model.Parking;
 
+import org.json.simple.JSONValue;
 import org.junit.Test;
+
+import util.Util;
 
 public class ParkingParseTest {
 	
@@ -36,9 +39,12 @@ public class ParkingParseTest {
 		HashMap<Integer,Parking> locationList = lp.parse();
 		assertEquals(26, locationList.size());
 		
-		HashMap<Integer,Parking> finalList = Merger.merge(parkingList, locationList);
+		HashMap<Integer,Parking> finalList = Util.merge(parkingList, locationList);
+		/*
 		for(Entry<Integer, Parking> p : finalList.entrySet()){
 			System.out.println(p.getValue().toString());
 		}
+		*/
+		System.out.println(Util.getJSONString(finalList));
 	}
 }

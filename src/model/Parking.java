@@ -1,6 +1,9 @@
 package model;
 
-public class Parking {
+import org.json.simple.JSONAware;
+import org.json.simple.JSONObject;
+
+public class Parking implements JSONAware {
 	private int id, avaiblePlaces, fullPlaces;
 	private double longitude, latitude;
 	private String name;
@@ -49,6 +52,21 @@ public class Parking {
 		this.name = name;
 		this.longitude = longitude;
 		this.latitude = latitude;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public String toJSONString() {
+		JSONObject obj = new JSONObject();
+		obj.put("id", this.id);
+	    obj.put("name", this.name);
+	    obj.put("avaiblePlaces", this.avaiblePlaces);
+	    obj.put("fullPlaces", this.fullPlaces);
+	    obj.put("longitude", this.longitude);
+	    obj.put("latitude", this.latitude);
+	    obj.put("status", this.status);
+	    return obj.toString();
+
 	}
 	public String toString(){
 		StringBuffer sb = new StringBuffer();
